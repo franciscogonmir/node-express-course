@@ -2,6 +2,7 @@
 
 const express = require('express');//import module express
 const { request } = require('http');
+const { message } = require('statuses');
 const app = express();//call constructor express
 
 const mockUserData = [
@@ -25,6 +26,24 @@ app.get("/users/:id",function(req,res){
         message:"got one user",
         users:req.params.id
     })
+})
+
+//post method
+app.post("/login",function(req,res){
+    userMock = "userFj";
+    userPassword="secret"
+    if(userMock == req.body.username && userPassword == req.body.password){
+        res.json({
+            success:true,
+            message:"login success!",
+            token:"encrypted token goes here"
+        })
+    }else{
+        res.json({
+            success:false,
+            message:"user or password invalid"
+        })
+    }
 })
 
 app.listen(8000,function(){
