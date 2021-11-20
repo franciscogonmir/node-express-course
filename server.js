@@ -1,10 +1,9 @@
 //add server
 
 const express = require('express');//import module express
-const { request } = require('http');
-const { message } = require('statuses');
 const app = express();//call constructor express
-
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 const mockUserData = [
     {name:"Mark"},
     {name:"jill"}
